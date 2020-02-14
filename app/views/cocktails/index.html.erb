@@ -1,12 +1,12 @@
 <div class="d-flex align-items-stretch">
   <%= render 'shared/navbar' %>
-  <% @img = ['https://static.ucraft.net/fs/userFiles/demo-to-thryliko/images/216-5-pop.jpg', 'https://static.ucraft.net/fs/userFiles/demo-to-thryliko/images/229-4-pop.jpg', 'https://static.ucraft.net/fs/userFiles/demo-to-thryliko/images/234-7-pop.jpg', 'https://static.ucraft.net/fs/userFiles/demo-to-thryliko/images/235-2-pop.jpg']  %>
   <div class="container p-4 align-self-center">
     <h1>Les cocktails</h1>
     <div class="d-flex flex-wrap">
       <% @cocktails.each do |cocktail|%>
-        <div class="card m-3 bg-dark">
-        <%= link_to "✕", cocktail_path(cocktail), class: 'text-right pr-3 pt-2 text-secondary',
+
+        <div class="card m-3 bg-dark" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
+        <%= link_to "✕", cocktail_path(cocktail), class: 'text-right text-light pr-3 pt-2 text-secondary',
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
         <%= link_to cocktail_path(cocktail) do %>
@@ -14,7 +14,7 @@
             <div class="card-body justify-content-center align-items-center">
               <h1 class="text-center"><i class="fas fa-cocktail"></i></h1>
               <h5 class="card-title text-center"><%= cocktail.name %></h5>
-              <p class="text-secondary border-top pt-2">
+              <p class="text-secondary border-top pt-2 text-light">
                 <% sentence = [] %>
                 <% @doses.select { |dose| dose.cocktail_id == cocktail.id }.each do |dose|%>
                   <% sentence << Ingredient.find(dose.ingredient_id).name   %>
@@ -28,8 +28,10 @@
     </div>
   </div>
   <div>
-    <%= link_to 'New Cocktail', new_cocktail_path, class: 'm-3 btn btn-primary' %>
+    <button type="button" class="btn btn-success rounded m-3 text-white" data-toggle="modal" data-target="#exampleModalCenter">
+      New cocktail
+    </button>
+    <%= render 'shared/new_cocktail_form' %>
   </div>
-
-
 </div>
+

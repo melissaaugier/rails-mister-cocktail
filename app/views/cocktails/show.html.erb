@@ -1,5 +1,6 @@
 <div class="d-flex align-items-stretch">
-  <div class="banner align-self-center">
+  <div class="banner align-self-center" style="background-image: url('<%= cl_image_path @cocktail.photo.key, crop: :fill %>');
+">
     <h1 class="p-4"><%= @cocktail.name %></h1>
   </div>
   <div class="container p-5 align-self-center">
@@ -19,6 +20,7 @@
     </button>
     <%= render 'shared/new_dose_form' %>
   </div>
+
    <h1 class='m-4 mr-5'><%= link_to '╳', root_path, class: 'text-secondary' %></h1>
 </div>
 
