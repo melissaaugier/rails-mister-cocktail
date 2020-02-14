@@ -1,11 +1,15 @@
-<div class="d-flex align-items-stretch">
+<div class="d-flex align-content-start flex-wrap">
   <%= render 'shared/navbar' %>
-  <div class="container p-4 align-self-center">
+  <div class="container p-lg-5 p-md-4 p-sm-2">
+    <button type="button" class="add btn btn-success sticky-top" data-toggle="modal" data-target="#exampleModalCenter">
+      <h1>+</h1>
+      <p>Add cocktail</p>
+    </button>
     <h1>Les cocktails</h1>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex align-content-start flex-wrap">
       <% @cocktails.each do |cocktail|%>
 
-        <div class="card m-3 bg-dark" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
+        <div class="card m-lg-2 m-md-2" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
         <%= link_to "✕", cocktail_path(cocktail), class: 'text-right text-light pr-3 pt-2 text-secondary',
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
@@ -28,10 +32,6 @@
     </div>
   </div>
   <div>
-    <button type="button" class="btn btn-success rounded-circle m-3 p-3 text-white" style="height:80px; width:80px;" data-toggle="modal" data-target="#exampleModalCenter">
-      <h1 style="margin-top: -15px;">+</h1>
-      <p style="margin-top: -20px;font-size:11px; font-weight: bold;">Add cocktail</p>
-    </button>
     <%= render 'shared/new_cocktail_form' %>
   </div>
 </div>

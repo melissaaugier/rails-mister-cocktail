@@ -23,3 +23,7 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  $body-bg: $dark;
+}

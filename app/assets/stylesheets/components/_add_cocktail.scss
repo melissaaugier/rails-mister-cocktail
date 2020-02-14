@@ -1,20 +1,28 @@
-  nav{
-  width: 30vh;
-  color: #fff;
-  background-color: #0f1312;
-  height: 100vh;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0px;
+.add{
+  color:#fff;
+  height: 80px;
+  width: 80px;
+  position: fixed;
+  right: 16px;
+  top: 5vh;
+  float: right;
+  border-radius: 50%;
+  h1{
+    margin-top: -18px;
+    font-size: 72px;
+    font-weight: 100;
+  }
+  p{
+    margin-top: -33px;
+    font-size: 10px;
+  }
 }
-
 
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) {
-  nav{
-    display: none;
+  .add{
+    right: 16px;
+    top: 75vh;
   }
 }
 
