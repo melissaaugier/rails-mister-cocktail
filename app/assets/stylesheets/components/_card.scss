@@ -1,0 +1,19 @@
+.card{
+  border: none;
+  width: 30%;
+
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
+  border-radius:20px;
+  img{
+    padding-left:50%;
+    height: 10vh;
+  }
+  a{
+    color:#fff;
+    text-decoration: none;
+  }
+  p{
+    font-size: 1rem;
+    color: #ffffff;
+  }
+}

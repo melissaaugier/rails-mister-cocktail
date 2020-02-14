@@ -1,0 +1,30 @@
+<div class="d-flex">
+  <%= render 'shared/navbar' %>
+  <% @img = ['https://static.ucraft.net/fs/userFiles/demo-to-thryliko/images/216-5-pop.jpg', 'https://static.ucraft.net/fs/userFiles/demo-to-thryliko/images/229-4-pop.jpg', 'https://static.ucraft.net/fs/userFiles/demo-to-thryliko/images/234-7-pop.jpg', 'https://static.ucraft.net/fs/userFiles/demo-to-thryliko/images/235-2-pop.jpg']  %>
+  <div class="container p-4">
+    <h1>Les cocktails</h1>
+    <div class="d-flex flex-wrap">
+      <% @cocktails.each do |cocktail|%>
+        <div class="card m-3 bg-dark">
+        <%= link_to "✕", cocktail_path(cocktail), class: 'text-right pr-3 pt-2 text-secondary',
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+        <%= link_to cocktail_path(cocktail) do %>
+            <img class="" src='<%= @img[rand(0..3)] %>' alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title text-center"><%= cocktail.name %></h5>
+              <p class="text-secondary">
+                <% sentence = [] %>
+                <% @doses.select { |dose| dose.cocktail_id == cocktail.id }.each do |dose|%>
+                  <% sentence << Ingredient.find(dose.ingredient_id).name   %>
+                <% end %>
+                <%= sentence.join(' - ').truncate_words(7) %>
+
+              </p>
+            </div>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
